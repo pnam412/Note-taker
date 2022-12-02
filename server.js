@@ -7,7 +7,7 @@ const util = require('util');
 // Helper method for generating notes
 // const notes = require('develop/public/assets/notes.html');
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -19,13 +19,10 @@ app.use(express.static('public'));
 
 // GET Route for homepage
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/index.html'))
+  res.sendFile(path.join(__dirname, './public/index.html'))
 );
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/notes.html'))
-);
-app.get('/index.js', (req, res) =>
-  res.sendFile(path.join(__dirname, '/index.js'))
+  res.sendFile(path.join(__dirname, './public/notes.html'))
 );
 
 app.listen(PORT, () =>
